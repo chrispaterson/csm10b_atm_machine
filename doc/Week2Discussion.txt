@@ -1,0 +1,186 @@
+Account
+
+// properties
+ private:
+
+// the account id, presumably this would come from a database and only need to be read or displayed here. It should be a unique id that won't need to be manipulated here, so we're using a string.
+ string id;
+
+// The two types of accounts this bank offers enumerated out.
+ enum types { checking, savings  };
+
+// the type of account this is from the enumerated list
+ int type;
+
+// to store the current balance of the account
+ float balaance;
+
+// The account owners represented as Client objects
+ vector<Client> owners;
+
+// the employee who opened this account
+ Employee originator;
+
+// the transactions vector of Transaction objects
+ vector<Transaction> transactions;
+
+// mehthods
+ public:
+
+// Returns the account id as a string
+ string getId();
+
+// gets the enumerated account type
+ int getAccountType();
+
+// get all the account types for correlating the current type
+ enum getAccountTypes();
+
+// returns the current balance
+ float getBalance();
+
+// get all Clients on this account
+ vector<Client> getOwners();
+
+// Get the employee who opened this account
+ Employee getOriginator();
+
+// Get the transaction history for this account. To limit the dataset in case it's large
+ // we'll pass a Range object that will limit the date range of the Transactions returned
+ vector<Transaction> getTransactions(Range range);
+
+// deposit a certain amount of money into the account
+ void deposit(float amount);
+
+// withdrawal some money from the account
+ void withdrawal(float amount);
+
+// once done modifying the data we'll need to save it to the database.
+ int save();
+ 
+Person
+
+private:
+
+// the person id, usually corelated with a database unique key id
+ string id;
+
+// person's first name
+ string first_name;
+
+// person's last name
+ string last_name;
+
+// person's address
+ string address;
+
+public
+
+// returns id
+ string getId();
+ 
+ // returns first_name
+ string getFirstName();
+
+// returns last_name
+ string getLastName();
+
+// returns first_name + " " + last_name;
+ string getFullName();
+
+// returns address
+ string getAddress();
+
+Employee extends Person
+
+private:
+ 
+ // unique id only to employee of the bank
+ string employee_id;
+
+// Hire Date
+ Date hire_date;
+
+public:
+
+// returns Employee's id
+ string getEmployeeId();
+
+// returns the date of hire for this employee
+ string getHireDate();
+
+Client extends Person
+
+private:
+ 
+ // unique id only to client of the bank
+ string client_id;
+
+// The Date the client signed up
+ Date inception_date;
+
+public:
+
+// returns Client's id
+ string getClientId();
+
+// returns the date of hire for this client
+ string getInceptionDate();
+
+Transaction
+ 
+ private:
+
+// Transaction ID
+ string id;
+
+// the amount of the transaction
+ float amount;
+
+// the two types of transactions
+ enum types { withdrawal, deposit  };
+
+// which was performed
+ int type;
+
+// date in which it happened
+ Date date;
+
+// time
+ Timestamp timestamp
+
+public
+ 
+ // returns the transaction id
+ string getId();
+
+// returns the types of transactions possible
+ enum getTypes();
+
+// returns the type this is
+ int getType();
+
+// the date this transaction occured
+ Date getDate();
+
+// returns the timestamp
+ Timestamp getTimestamp();
+
+EmployeeCollection // this would be useful for generating employee reports
+
+private:
+
+// all employees
+ vector<Employee> all;
+
+public:
+ 
+ // get's all employees ever
+ vector<Employee> getAllEmployees();
+
+// gets only employees who are active or currently employed
+ vector<Employee> getActiveEmployees();
+
+// gets only no longer working for the company employees
+ vector<Employee> getInactiveEmployees();
+

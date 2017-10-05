@@ -1,0 +1,25 @@
+ATM Machine
+
+
+In this assignment you will create a program that allows a user to do the following:
+
+
+ - Login using their id and password.
+ - Create a bank account by supplying a user id and password (there are two bank accounts, checking and saving). Deposit Money (ability to deposit in any of my many many accounts)
+ - Withdraw Money (ability to withdraw from any of my many many accounts)
+ - Request balance. I could request balance from all accounts I have in the bank).
+ - Transfer money between accounts using just an account number (transfer for accounts under same user)
+ - Quit the program.
+
+
+The concept of an ATM is simple class. We will be using files to keep track of accounts, passwords and other information. Your project will display a “graphical interface using our MAZE assignment”. There is one main menu which lists the items above.
+In the project, you have to demonstrate the following:
+  1. Your ability to use constructors
+  2. Your ability to use inheritance
+  3. Your ability to overload operators (add two accounts in case I want to merge accounts or display balance in all accounts for example).
+  4. Your ability to use Recursive functions
+  5. Your ability to use file access
+  6. Your ability to use templates (recommendation, make all functions templates)
+
+We will discuss this document in class, and we will modify it, but no functionality will be removed from it if you want to start working on it early.
+You must zip your whole project, including an executable when you submit your work. Please note that the project will consist of many files (classes and header files (.cpp and .h files)) I might not be able to re­build it on my system unless I have the full project structure.
