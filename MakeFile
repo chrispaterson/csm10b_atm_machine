@@ -1,0 +1,13 @@
+CXX=clang++
+FLAGS=-std=c++11 -stdlib=libc++ -lncurses
+SRC=$(wildcard src/*.cpp)
+all:
+	$(CXX) $(FLAGS) $(SRC) -o build/atm_machine
+
+clean:
+	rm -fr build/*
+
+test: 
+	$(CXX) $(FLAGS) src/test.cpp -o build/test.bin -Isrc/
+
+.PHONY: all clean test
