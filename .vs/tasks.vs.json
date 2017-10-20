@@ -1,0 +1,28 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskName": "task-makefile",
+      "appliesTo": "win_make",
+      "type": "command",
+      "contextType": "build",
+      "command": "make",
+      "output": "${workspaceRoot}\\bin\\atm_machine.exe"
+    },
+    {
+      "taskName": "task-makefile",
+      "appliesTo": "win_make",
+      "type": "command",
+      "contextType": "clean",
+      "command": "nmake",
+      "args": [
+        "clean"
+      ]
+    },
+    {
+      "taskName": "task-csm10b_atm_machine",
+      "appliesTo": "/",
+      "type": "launch"
+    }
+  ]
+}

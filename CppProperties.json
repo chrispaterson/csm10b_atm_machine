@@ -1,0 +1,8 @@
+{
+  "configurations": [
+    {
+      "name": "Windows",
+      "includePath": [ "src", "${env.VCToolsInstallDir}\\include", "lib\\pdcurs34"]
+    }
+  ]
+}
