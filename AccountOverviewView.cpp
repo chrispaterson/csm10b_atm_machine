@@ -3,57 +3,82 @@
 #include "NumberFormatter.h"
 #include "LoginStruct.h"
 #include <string>
+#include <iomanip>
+#include <sstream>
 #include <fstream>
 #include <vector>
 #include <memory>
 
 
-AccountOverviewView::AccountOverviewView(LoginStruct* loginStructPtrParam)
+AccountOverviewView::AccountOverviewView(LoginStruct* loginStructPtrParam, bool showCreateNew, std::string prompt)
 {
 
 	loginStructPtr = loginStructPtrParam;
-	show();
+	show(prompt, showCreateNew);
 }
-void AccountOverviewView::show() {
-
-	std::string welcomeMsg = "Welcome ";
-	welcomeMsg = welcomeMsg + loginStructPtr->username + "!";
-
-	// Get's middle X position based on user prompt
-	int xPosition = PROMPT_X;
-
-
-	// Prints out the prompt for the user
-	mvwprintw(getWin(), PROMPT_Y, xPosition, welcomeMsg.c_str());
+void AccountOverviewView::show(std::string prompt, bool showCreateNew) {
 
 	std::vector<std::string> choices;
 
-	for (int i = 0; i < MAX_ACCOUNTS; i++) {
+	Account totalAccount;
+	totalAccount.balance = 0.0;
+	totalAccount.id = 0;
+
+	NumberFormatter numFormatter;
+
+	for (int i = 0; i < loginStructPtr->MAX_ACCOUNTS; i++) {
 
 		if (loginStructPtr->accounts[i] > 0) {
 			Account* account = getAccountFromFile(loginStructPtr->accounts[i]);
-			NumberFormatter numFormatter;
-			std::string balance = "$" + numFormatter.convert_to_two_decimal_string(account->balance);
-			std::string str_account_id = std::to_string(account->id);
-			switch (account->type) {
-			case Checking:
-				choices.push_back("Checking [" + str_account_id + "] " + balance);
-				break;
-			case Savings:
-				choices.push_back("Savings [" + str_account_id + "] " + balance);
-				break;
-			case CD:
-				choices.push_back("CD [" + str_account_id + "] " + balance);
-				break;
+			if (account != nullptr) {
+
+				totalAccount += *account;
+
+				std::string balance = "$" + numFormatter.convert_to_two_decimal_string(account->balance);
+				std::string str_account_id = std::to_string(account->id);
+				std::string accountType;
+				switch (account->type) {
+				case Checking:
+					accountType = "Checking";
+					break;
+				case Savings:
+					accountType = "Savings";
+					break;
+				case CD:
+					accountType = "CD";
+					break;
+				}
+
+				std::ostringstream sstream;
+				sstream << std::setw(8) << accountType;
+				sstream << std::setw(8) << '#' << account->id;
+				sstream << std::right << std::setw(10) << '$' << std::fixed << std::setprecision(2) << account->balance;
+				choices.push_back(sstream.str());
+
+				delete account;
 			}
-			delete account;
 		}
 	}
-	choices.push_back("       [-- Create A New Account --]");
+	if(showCreateNew) {
+		choices.push_back("-> Create a new Account");
+	}
+	choices.push_back("<- Exit");
 	int choices_len = choices.size();
 
 	int choice = 0;
+
+	int xPosition = PROMPT_X;
 	int yPosition = PROMPT_Y;
+
+	if (prompt == "") {
+		prompt = "Welcome ";
+		prompt += loginStructPtr->username;
+		prompt += "! [$";
+		prompt += numFormatter.convert_to_two_decimal_string(totalAccount.balance);
+		prompt += "]";
+	}
+	// Prints out the prompt for the user
+	mvwprintw(getWin(), PROMPT_Y, xPosition, prompt.c_str());
 
 	keypad(getWin(), true);
 	curs_set(0);
@@ -94,9 +119,19 @@ void AccountOverviewView::show() {
 		}
 		if (choice == 10) {
 			curs_set(1);
-			createNewSelected = (selected == choices_len - 1);
-			if (selected < choices_len - 1) {
-				selectedAccount = getAccountFromFile(loginStructPtr->accounts[selected]);
+			if (showCreateNew) {
+				createNewSelected = (selected == choices_len - 2);
+				if (selected < choices_len - 2) {
+					selectedAccount = getAccountFromFile(loginStructPtr->accounts[selected]);
+				}
+				else if (selected == choices_len - 1) {
+					exit(0);
+				}
+			}
+			else {
+				if(selected < choices_len - 1) {
+					selectedAccount = getAccountFromFile(loginStructPtr->accounts[selected]);
+				}
 			}
 			break;
 		}
@@ -119,7 +154,4 @@ Account* AccountOverviewView::getAccountFromFile(int account_id) {
 	else {
 		return nullptr;
 	}
-}
-AccountOverviewView::~AccountOverviewView()
-{
 }

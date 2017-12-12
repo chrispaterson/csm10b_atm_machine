@@ -1,29 +1,27 @@
 #pragma once
 #include <sstream>
 #include <iomanip>
-#include <locale>
+#include <string>
 
+// Helper Class creating some template formats for manipulating
+// numbers for display etc...
 class NumberFormatter
 {
+
 public:
-	NumberFormatter();
-	~NumberFormatter();
 
-	template <typename T>
-	T convert_to_two_decimals(T num) {
-		T = T * 100;
-		int retr = std::static_cast<int>(T);
-		T = std::static_cast<T>(retr);
-		T = T / 100;
-		return T;
-	}
+// creates a string with two decimal places
+template <typename T>
+std::string convert_to_two_decimal_string(T num) {
 
-	template <typename T>
-	std::string convert_to_two_decimal_string(T num) {
-		std::ostringstream Convert;
-		Convert << std::fixed << std::setprecision(2) << num;
-		return Convert.str();
-	}
+	// create an output string stream
+	std::ostringstream Convert;
 
+	// do the string manipulation through the stream
+	Convert << std::fixed << std::setprecision(2) << num;
+
+	// get the string value
+	return Convert.str();
+}
 };
 

@@ -5,7 +5,8 @@ class PINInputView :
 	public InputView
 {
 public:
+
+	// constructor takes PIN input
 	PINInputView(int * pin, int pin_size);
-	~PINInputView();
 };
 

@@ -4,11 +4,20 @@
 
 class Controller
 {
+
 private:
-public:
-	Controller();
+	// Login
 	void showLoginModule();
+
+	// create a user
 	void showUserCreationModule();
+
+	// show the account
 	void showAccountModule(LoginStruct * loginStruct);
+
+public:
+
+	// Constructor
+	Controller();
 };
 

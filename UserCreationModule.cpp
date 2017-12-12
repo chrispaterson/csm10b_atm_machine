@@ -8,46 +8,57 @@
 #include <string>
 #include <ios>
 #include <iostream>
-#include "helper_write_loginstruct.h"
+#include "LoginStructFileWriter.h"
 
 
+// constructor
 UserCreationModule::UserCreationModule()
 {
+
+	// whether or not the user was created
 	bool userCreated = false;
 
+	// dynamically allocate a new loginStruct
+	loginStruct = new LoginStruct;
+	loginStruct->username[loginStruct->USERNAME_SIZE] = {};
+
+	// use a loop to make sure we create the user
 	while(!userCreated) {
 
+		// show the loginView to get username
 		showLoginView();
+
+		// get the new pin number
 		showPINInputView();
+
+		// create the file, maybe?
 		userCreated = createUserFile();
 	}
 }
-UserCreationModule::~UserCreationModule()
-{
-}
-char * UserCreationModule::getUsername()
-{
-	return loginStruct.username;
-}
 
-int * UserCreationModule::getPIN()
-{
-	return &loginStruct.pin;
-}
-
+// login view asks for the username
 void UserCreationModule::showLoginView() {
 
-	LoginView loginView(getUsername(), USERNAME_SIZE);
+	// pass the login struct members
+	LoginView loginView(loginStruct->username, loginStruct->USERNAME_SIZE);
 }
+
+// get pin input
 void UserCreationModule::showPINInputView() {
 
-	PINInputView pinInputView(&loginStruct.pin, PIN_SIZE);
+	// pass the login struct members
+	PINInputView pinInputView(&loginStruct->pin, loginStruct->PIN_SIZE);
 }
 bool UserCreationModule::createUserFile() {
 
-	helper_write_loginstruct writer(&loginStruct);
+	// use the utility for writing
+	LoginStructFileWriter writer(loginStruct);
+
+	// in case we need to display a message
 	DisplayMesageView dmv;
 
+	// did the user exist already?  If yes we can't create
+	// a new one
 	if (writer.exists()) {
 
 		// user already exists!!
@@ -55,5 +66,6 @@ bool UserCreationModule::createUserFile() {
 		return false;
 	}
 
+	// if not, then hopefully we can write to it
 	return writer.write();
 }

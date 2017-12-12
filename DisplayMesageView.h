@@ -4,9 +4,10 @@
 class DisplayMesageView :
 	public View
 {
+
 public:
-	DisplayMesageView();
+
+	// display the message in the view
 	void displayMessage(std::string message);
-	~DisplayMesageView();
 };
 

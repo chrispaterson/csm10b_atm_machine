@@ -1,11 +1,10 @@
 #include "stdafx.h"
 #include "LoginView.h"
-#include <string>
 
-using namespace std;
-
+// Constructor for creating the Login View
 LoginView::LoginView(char* username, int username_size) : InputView()
 {
+	// send prompt get input
 	generateSingleInput("Please enter user ID", username, username_size);
 }
 

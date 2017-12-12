@@ -1,5 +1,8 @@
 #pragma once
 #include "curses.h"
+
+// Base class that generates all the borders and the view
+// while providing many hooks for values
 class View {
 
 private:

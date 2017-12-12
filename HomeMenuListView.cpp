@@ -2,12 +2,8 @@
 #include "HomeMenuListView.h"
 
 
+// Constructs the menulist
 HomeMenuListView::HomeMenuListView()
 {
 	createMenu(menuPrompt, menuChoices, NUM_CHOICES);
-}
-
-
-HomeMenuListView::~HomeMenuListView()
-{
 }

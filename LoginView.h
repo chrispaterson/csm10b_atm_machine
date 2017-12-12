@@ -2,11 +2,11 @@
 #include "InputView.h"
 
 class LoginView :
-	public InputView
-{
+	public InputView {
+
 public:
-	
-	LoginView(char* username, int username_size);
+
+	// constructor takes user and it's size
+	LoginView(char * username, int username_size);
 
 };
-

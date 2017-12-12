@@ -5,10 +5,13 @@
 
 using namespace std;
 
+// constructor gathers values and sets variables
 View::View() {
 	getmaxyx(stdscr, yMax, xMax);
 	height = yMax - 2 * padding;
 	width = xMax - 2 * padding;
+
+	// create our window
 	win = newwin(height, width, start_y, start_x);
 
 	refresh();
@@ -17,11 +20,13 @@ View::View() {
 	middleY = height / 2;
 	middleX = width / 2;
 };
+
+// clear all the stuff out!  No memory leaks!!
 View::~View() {
+
 	endwin();
 	wclear(win);
 	delwin(win);
-	//delete win;
 };
 
 // Getters/Setters

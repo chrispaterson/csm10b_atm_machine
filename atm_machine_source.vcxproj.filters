@@ -24,16 +24,10 @@
     <ClInclude Include="View.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MenuView.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="InputView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Controller.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="LoginView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="LoginModule.h">
@@ -46,9 +40,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DisplayMesageView.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Module.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AccountModule.h">
@@ -69,28 +60,37 @@
     <ClInclude Include="UserCreationModule.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CreateUsernameView.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Account.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="NewAccountModule.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AccountTypeSelectView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="helper_write_loginstruct.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="AccountDetailView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Transaction.h">
+    <ClInclude Include="NumberFormatter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="NumberFormatter.h">
+    <ClInclude Include="LoginStructFileWriter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AccountStructFileWriter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MoneyInputView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TransactionHistoryView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TransactionFileHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Account.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LoginView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -102,9 +102,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="View.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MenuView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="InputView.cpp">
@@ -128,9 +125,6 @@
     <ClCompile Include="AccountModule.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Module.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="AccountOverviewView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -146,22 +140,28 @@
     <ClCompile Include="UserCreationModule.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CreateUsernameView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="NewAccountModule.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AccountTypeSelectView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="helper_write_loginstruct.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="AccountDetailView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="NumberFormatter.cpp">
+    <ClCompile Include="LoginStructFileWriter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MoneyInputView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TransactionHistoryView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TransactionFileHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AccountStructFileWriter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

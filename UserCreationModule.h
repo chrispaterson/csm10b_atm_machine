@@ -1,23 +1,27 @@
 #pragma once
-#include "Module.h"
 #include "LoginStruct.h"
 
-class UserCreationModule :
-	public Module
+// class for creating a new user
+
+class UserCreationModule 
 {
 private:
-	LoginStruct loginStruct;
-	char* getUsername();
-	int* getPIN();
+	// reference to the login struct Ptr
+	LoginStruct* loginStruct;
 
+	// internal flow functions
 	void showLoginView();
-
 	void showPINInputView();
-
 	bool createUserFile();
 
 public:
+
+	// constructor
 	UserCreationModule();
-	~UserCreationModule();
+
+	// inline function for returning the login struct pointer
+	LoginStruct* getLoginStructPtr() {
+		return loginStruct;
+	}
 };
 
